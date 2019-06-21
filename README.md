@@ -22,3 +22,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* Edit credentials.yml by run this command: `EDITOR="vim" rails credentials:edit`,
+then add:
+
+```
+bitly:
+  login: XXXX
+  access_token: XXXX
+```
