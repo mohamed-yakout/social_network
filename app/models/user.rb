@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  after_save :set_shorten_url
+  before_validation :set_shorten_url
 
   protected
 
@@ -9,6 +9,10 @@ class User < ApplicationRecord
     end
 
     def set_shorten_url
-      self.update_column(:shorten, self.get_shorten_url)
+      begin
+        self.shorten_url = self.get_shorten_url
+      rescue => error
+        self.errors.add(:original_url, :not_implemented, message: error.to_s)
+      end
     end
 end
