@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @heading.user %>
+</p>
+
+<p>
+  <strong>Html element:</strong>
+  <%= @heading.html_element %>
+</p>
+
+<p>
+  <strong>Html value:</strong>
+  <%= @heading.html_value %>
+</p>
+
+<p>
+  <strong>Html type:</strong>
+  <%= @heading.html_type %>
+</p>
+
+<%= link_to 'Edit', edit_heading_path(@heading) %> |
+<%= link_to 'Back', headings_path %>

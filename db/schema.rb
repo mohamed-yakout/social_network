@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_195003) do
+ActiveRecord::Schema.define(version: 2019_06_22_100332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "headings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "html_element"
+    t.string "html_value"
+    t.string "html_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_headings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -24,4 +34,5 @@ ActiveRecord::Schema.define(version: 2019_06_20_195003) do
     t.index ["original_url"], name: "index_users_on_original_url", unique: true
   end
 
+  add_foreign_key "headings", "users"
 end

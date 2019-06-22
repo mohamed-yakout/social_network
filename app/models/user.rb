@@ -2,6 +2,8 @@ require 'nokogiri'
 
 class User < ApplicationRecord
 
+  has_many :headings
+
   before_validation :set_shorten_url
 
   def get_response_with_redirect(uri)

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Headings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Html element</th>
+      <th>Html value</th>
+      <th>Html type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @headings.each do |heading| %>
+      <tr>
+        <td><%= heading.user %></td>
+        <td><%= heading.html_element %></td>
+        <td><%= heading.html_value %></td>
+        <td><%= heading.html_type %></td>
+        <td><%= link_to 'Show', heading %></td>
+        <td><%= link_to 'Edit', edit_heading_path(heading) %></td>
+        <td><%= link_to 'Destroy', heading, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Heading', new_heading_path %>
