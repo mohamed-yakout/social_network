@@ -3,6 +3,8 @@ require 'nokogiri'
 class User < ApplicationRecord
 
   has_many :headings
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
 
   HEADING_TYEPS = %w(h1 h2 h3)
 
