@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :headings, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -10,6 +10,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+  end
+
+  # GET /users/1/headings
+  def headings
+    @headings = @user.headings.paginate(page: params[:page])
   end
 
   # GET /users/new
