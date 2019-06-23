@@ -1,0 +1,23 @@
+<h1>Headings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Html value</th>
+      <th>Html type</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @headings.each do |heading| %>
+      <tr>
+        <td><%= heading.html_value %></td>
+        <td><%= heading.html_type %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @headings %> |
+
+<%= link_to 'Back', user_path(@user) %>

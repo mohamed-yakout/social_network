@@ -1,0 +1,21 @@
+<h1>Headings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Html element</th>
+      <th>Html value</th>
+      <th>Html type</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.headings.each do |heading| %>
+      <tr>
+        <td><%= heading.html_element %></td>
+        <td><%= heading.html_value %></td>
+        <td><%= heading.html_type %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
