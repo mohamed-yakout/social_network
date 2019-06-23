@@ -1,0 +1,43 @@
+<%= search_form_for @q, url: home_user_path(@user) do |f| %>
+
+  # Search if the name field contains...
+  <%= f.label :name_cont %>
+  <%= f.search_field :name_cont %>
+
+  # Search if the original URL field contains...
+  <%= f.label :original_url_cont %>
+  <%= f.search_field :original_url_cont %>
+
+  # Search if an associated headings.html_value starts with...
+  <%= f.label :headings_html_value_cont %>
+  <%= f.search_field :headings_html_value_cont %>
+
+  <%= f.submit %>
+<% end %>
+
+
+<h1>Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Original url</th>
+      <th>Shorten url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.original_url %></td>
+        <td><%= user.shorten_url %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

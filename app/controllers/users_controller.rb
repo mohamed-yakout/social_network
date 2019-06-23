@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :headings, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :headings, :home, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -15,6 +15,12 @@ class UsersController < ApplicationController
   # GET /users/1/headings
   def headings
     @headings = @user.headings.paginate(page: params[:page])
+  end
+
+  # GET /users/1/home
+  def home
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).includes(:headings).page(params[:page])
   end
 
   # GET /users/new
