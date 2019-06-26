@@ -28,7 +28,8 @@ class FriendshipsController < ApplicationController
 
     respond_to do |format|
       if @friendship.save
-        format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
+        # format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
+        format.html { redirect_to request.referrer, notice: 'Friendship was successfully created.' }
         format.json { render :show, status: :created, location: @friendship }
       else
         format.html { render :new }
@@ -56,7 +57,8 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship.destroy
     respond_to do |format|
-      format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
+      # format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'Friendship was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
