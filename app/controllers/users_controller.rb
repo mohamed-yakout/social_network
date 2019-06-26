@@ -14,12 +14,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/headings
   def headings
-    @headings = @user.headings.paginate(page: params[:page])
+    @q = @user.headings.ransack(params[:q])
+    @headings = @q.result.paginate(page: params[:page])
   end
 
   # GET /users/1/home
   def home
-    @q = User.ransack(params[:q])
+    @q = User.where.not(id: @user.id).ransack(params[:q])
     @users = @q.result(distinct: true).includes(:headings).page(params[:page])
   end
 

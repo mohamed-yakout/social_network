@@ -11,6 +11,10 @@ class User < ApplicationRecord
   before_validation :set_shorten_url
   after_create :set_headings
 
+  def is_friend? friend
+    self.friend_ids.include? friend.id
+  end
+
   def get_response_with_redirect(uri)
     response = Net::HTTP.get_response(uri)
     if response.code == "301"
