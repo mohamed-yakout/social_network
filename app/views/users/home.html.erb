@@ -1,5 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<ul>
+  <li><a href="default.asp">My Profile</a></li>
+  <li><a href="news.asp">News</a></li>
+  <li><a href="contact.asp">Contact</a></li>
+  <li><a href="about.asp">About</a></li>
+  <li style="color: white; float: right; font-size: 18px;"><%= @user.name %></li>
+</ul>
+
+
 <%= search_form_for @q, url: home_user_path(@user) do |f| %>
 
   # Search if the name field contains...
