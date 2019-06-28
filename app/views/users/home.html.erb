@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<ul>
+<ul class="top-bar">
   <li><a href="default.asp">My Profile</a></li>
   <li><a href="news.asp">News</a></li>
   <li><a href="contact.asp">Contact</a></li>
@@ -46,7 +46,7 @@
         <td><%= user.original_url %></td>
         <td><%= user.shorten_url %></td>
         <td><%= link_to 'Matched Headings', headings_user_path(user, q: {html_value_cont: params[:q] ? params[:q][:headings_html_value_cont] : ''}) %></td>
-        <%# <td><%= link_to 'Path to User', edit_user_path(user) %></td>
+        <td><%= link_to 'Path to User', "/users/#{@user.id}/shortest_path/#{user.id}" %></td>
         <td>
           <%= @user.is_friend?(user) ?
           link_to('Remove Friend',

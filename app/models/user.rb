@@ -28,7 +28,10 @@ class User < ApplicationRecord
 
     while !queue.empty? do
       curr_user = queue.pop
-      if curr_user.id == user_destination
+      puts "============ #{curr_user.id} ============="
+      puts "============ #{curr_user.path_visit.map(&:id)} =============" if curr_user.path_visit
+      if curr_user.id == user_destination.id
+        curr_user.path_visit << user_destination
         return curr_user.path_visit
       end
 
@@ -36,6 +39,7 @@ class User < ApplicationRecord
 
       curr_user.friends.where.not(id: will_visit_user_ids).each do |friend|
         if !visited_user_ids[friend.id]
+          friend.path_visit ||= curr_user.path_visit
           friend.path_visit ||= []
           friend.path_visit << curr_user
           queue.push friend

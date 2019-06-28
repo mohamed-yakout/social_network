@@ -1,0 +1,16 @@
+<h1>Shortest Path</h1>
+
+<h2>Source User: <%= @user.name %></h2>
+<h2>Destination User: <%= @user_destination.name %></h2>
+
+<% if @shortest_path.empty? %>
+  <h3>No Path exist</h3>
+<% else %>
+  <ul>
+    <% @shortest_path.each do |user| %>
+      <li><%= "ID: #{user.id}, Name: #{user.name}" %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to 'Back', home_user_path(@user) %>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :headings, :home, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :headings, :home, :shortest_path, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -22,6 +22,11 @@ class UsersController < ApplicationController
   def home
     @q = User.where.not(id: @user.id).ransack(params[:q])
     @users = @q.result(distinct: true).includes(:headings).page(params[:page])
+  end
+
+  def shortest_path
+    @user_destination = User.find_by_id(params[:user_destination_id])
+    @shortest_path = User.shortest_path @user, @user_destination
   end
 
   # GET /users/new

@@ -14,7 +14,7 @@
  *= require_self
  */
 
- ul {
+ ul.top-bar {
    list-style-type: none;
    margin: 0;
    padding: 0;
@@ -22,11 +22,11 @@
    background-color: #333;
  }
 
- li {
+ ul.top-bar li {
    float: left;
  }
 
- li a {
+ ul.top-bar li a {
    display: block;
    color: white;
    text-align: center;
@@ -35,6 +35,6 @@
  }
 
  /* Change the link color to #111 (black) on hover */
- li a:hover {
+ ul.top-bar li a:hover {
    background-color: #111;
  }
