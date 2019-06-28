@@ -1,0 +1,46 @@
+1. Briefly explain the GIL assuming you were addressing a
+non-technical audience. What are the potential cost
+implications of the GIL for scaling a production
+application?
+
+GIL: global interpreter lock.
+
+Let's assume the development team need to use Multithreading Or Multiprocessing.
+
+A) In case Multithreading:
+
+If a thread accesses our model object, then no other threads can access it until the first thread has finished dealing with it.
+
+Assume three iterations will be treated sequentially.
+The only performance difference will be the additional time spent starting/joining each thread, which is detrimental to our objective.
+
+But if our model is able to perform batch inference, all of them can  generate in the same time.
+Otherwise, it needs to generate each one individually.
+It'll need more engineered approach. (A lot of test cases also to cover it).
+
+
+B) Multiprocessing:
+
+Two ways of it:
+- Booting up separate processes.
+- Connecting to input & output, or by spawning processes that can inherit interpreter process resources.
+So, if it's large model, we should avoid loading full model into RAM.
+So, the cost in this case, we should care about the server specs.
+
+Conclusion:
+- Add many test cases to handle  Multithreading.
+- Increase RAM of server if need to load big module in RAM for Multiprocessing.
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Also for a non-technical audience, explain how a
+background job queuing service could help when
+accessing external APIs.
+
+Let's explain it by samples, and the cases we need to run background services on server to save the time of requests.
+
+- Integrate with S3 API to upload files.
+- In my work previous, I needed before to create inserter or setter. This process calculate the fields need time, and insert the values in the table.
+(eg. Calculate suggested jobseekers more match with this Job .. this one need time, so better in Background in the server)
