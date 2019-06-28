@@ -20,4 +20,4 @@
 
 <%= will_paginate @headings %> |
 
-<%= link_to 'Back', user_path(@user) %>
+<%= link_to 'Back', params[:logined_user_id] ? home_user_path(params[:logined_user_id]) : user_path(@user) %>

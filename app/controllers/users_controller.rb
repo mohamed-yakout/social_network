@@ -41,10 +41,14 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    params[:user] ||= {}
+    @user = User.find_by(name: params[:user][:name], original_url: params[:user][:original_url]) || User.new(user_params)
 
     respond_to do |format|
-      if @user.save
+      if @user.id
+        format.html { redirect_to @user, notice: 'User was successfully logined.' }
+        format.json { render :show, status: :ok, location: @user }
+      elsif @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
