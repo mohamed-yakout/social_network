@@ -36,7 +36,7 @@ Things you may want to cover:
 
 * Notes:
 
-- Algorithm of **shortest path** is DFS Algorithm.
-It's working for small business companies, not huge number of users.
-if huge number of users, May we will nedd to build Graph Database using `neo4j`
-I started a trial, but not completed in branch `graph_users`
+  - Algorithm of **shortest path** is DFS Algorithm.
+  It's working for small business companies, not huge number of users.
+  if huge number of users, May we will nedd to build Graph Database using `neo4j`
+  I started a trial, but not completed in branch `graph_users`
