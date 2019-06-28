@@ -1,10 +1,13 @@
 require 'nokogiri'
+require 'queue_array.rb'
 
 class User < ApplicationRecord
 
   has_many :headings
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+
+  attr_accessor :path_visit
 
   HEADING_TYEPS = %w(h1 h2 h3)
 
@@ -13,6 +16,34 @@ class User < ApplicationRecord
 
   def is_friend? friend
     self.friend_ids.include? friend.id
+  end
+
+  def self.shortest_path user_source, user_destination
+    will_visit_user_ids = [user_source.id]
+    visited_user_ids = {}
+    queue = QueueArray.new
+    path = []
+
+    queue.push(user_source)
+
+    while !queue.empty? do
+      curr_user = queue.pop
+      if curr_user.id == user_destination
+        return curr_user.path_visit
+      end
+
+      visited_user_ids[curr_user.id] = true
+
+      curr_user.friends.where.not(id: will_visit_user_ids).each do |friend|
+        if !visited_user_ids[friend.id]
+          friend.path_visit ||= []
+          friend.path_visit << curr_user
+          queue.push friend
+        end
+      end
+    end
+
+    return []
   end
 
   def get_response_with_redirect(uri)
