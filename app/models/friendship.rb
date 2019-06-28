@@ -11,11 +11,11 @@ class Friendship < ApplicationRecord
 
   private
     def create_bi_directional_relationship
-      friend.friendships.create(friend: user)
+      friend.friendships.create(friend_id: self.user_id)
     end
 
     def destroy_bi_directional_relationship
-      friendship = friend.friendships.find_by(friend: user)
+      friendship = friend.friendships.find_by(friend_id: self.user_id)
       friendship.destroy if friendship
     end
 

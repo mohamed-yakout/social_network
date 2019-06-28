@@ -3,7 +3,7 @@ require 'queue_array.rb'
 
 class User < ApplicationRecord
 
-  has_many :headings
+  has_many :headings, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 

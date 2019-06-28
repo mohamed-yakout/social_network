@@ -1,11 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  original_url: MyString
-  shorten_url: MyString
+  name: a_name
+  original_url: https://www.davidokwii.com/making-http-post-and-get-requests-in-ruby-on-rails/
 
 two:
-  name: MyString
-  original_url: MyString
-  shorten_url: MyString
+  name: b_name
+  original_url: https://stackoverflow.com/
+
+three:
+  name: c_name
+  original_url: https://en.wikipedia.org/wiki/Python_(programming_language)
+
+four:
+  name: d_name
+  original_url: https://en.wikipedia.org/wiki/Java_(programming_language)

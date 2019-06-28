@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :friendships
+  resources :friendships, only: [:create, :destroy]
   resources :headings
   resources :users do
     member do
