@@ -1,0 +1,21 @@
+# NEO4J_URL=http://localhost:7474
+# NEO4J_URL=http://user:pass@localhost:7474
+#
+# NEO4J_TYPE=bolt
+# NEO4J_URL=bolt://user:pass@localhost:7687
+#
+# # jRuby only
+# NEO4J_TYPE=embedded
+# NEO4J_PATH=/path/to/graph.db
+
+development:
+  type: http
+  url: http://localhost:7474
+
+test:
+  type: http
+  url: http://localhost:7575
+
+production:
+  type: http
+  url: http://neo4j:password@localhost:7000

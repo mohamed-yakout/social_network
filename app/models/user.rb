@@ -2,6 +2,8 @@ require 'nokogiri'
 
 class User < ApplicationRecord
 
+  include Neo4j::ActiveNode
+
   has_many :headings
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships

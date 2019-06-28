@@ -1,4 +1,11 @@
 class Friendship < ApplicationRecord
+
+  include Neo4j::ActiveRel
+
+  from_class :User
+  to_class   :User
+  # type 'MANAGES'
+
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 

@@ -66,3 +66,6 @@ gem 'bitly'
 gem 'will_paginate'
 
 gem 'ransack'
+
+gem 'neo4j'
+gem 'neo4j-core'
