@@ -28,8 +28,8 @@ class User < ApplicationRecord
 
     while !queue.empty? do
       curr_user = queue.pop
-      puts "============ #{curr_user.id} ============="
-      puts "============ #{curr_user.path_visit.map(&:id)} =============" if curr_user.path_visit
+      # puts "============ #{curr_user.id} ============="
+      # puts "============ #{curr_user.path_visit.map(&:id)} =============" if curr_user.path_visit
       if curr_user.id == user_destination.id
         curr_user.path_visit << user_destination
         return curr_user.path_visit
