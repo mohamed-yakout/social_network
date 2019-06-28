@@ -5,29 +5,31 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 2.6.3
 
-* System dependencies
+* System dependencies:
 
-* Configuration
+  - Create Account in https://bitly.com/
+  - Create Access Token in https://bitly.com/
+  - Install PostgreSQL in the PC Or Server
 
-* Database creation
+* Configuration:
 
-* Database initialization
+  - Edit credentials.yml by run this command: `EDITOR="vim" rails credentials:edit`,
+  then add:
+
+  ```
+  bitly:
+    login: XXXX
+    access_token: XXXX
+  ```
+
+* Database creation:
+
+  `database.yml` in the Repo, I didn't add it in .gitignore.
+  you can change username & password & db name
+  depend on your DB in the server.
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-* Edit credentials.yml by run this command: `EDITOR="vim" rails credentials:edit`,
-then add:
-
-```
-bitly:
-  login: XXXX
-  access_token: XXXX
-```
+- Run `rake test .`
